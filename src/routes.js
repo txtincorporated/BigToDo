@@ -2,7 +2,7 @@ routes.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 export default function routes($stateProvider, $urlRouterProvider) {
 
-	  $stateProvider.state({
+  $stateProvider.state({
     name: 'welcome',
     url: '/',
     component: 'welcome'
@@ -15,6 +15,12 @@ export default function routes($stateProvider, $urlRouterProvider) {
     resolve: {
       tasks: ['tasksService', tasksService => {
         return tasksService.getAllTasks();
+      }],
+      contexts: ['contextsService', contextsService => {
+        return contextsService.getAllContexts();
+      }],
+      projects: ['projectsService', projectsService => {
+        return projectsService.getAllProjects();
       }]
     },
   });
@@ -30,16 +36,16 @@ export default function routes($stateProvider, $urlRouterProvider) {
     },
   });
 
-  $stateProvider.state({
-    name: 'contexts',
-    url: '/contexts',
-    component: 'contexts',
-    resolve: {
-      contexts: ['contextsService', contextsService => {
-        return contextsService.getAllContexts();
-      }]
-    },
-  });
+  // $stateProvider.state({
+  //   name: 'contexts',
+  //   url: '/contexts',
+  //   component: 'contexts',
+  //   resolve: {
+  //     contexts: ['contextsService', contextsService => {
+  //       return contextsService.getAllContexts();
+  //     }]
+  //   },
+  // });
 
   $stateProvider.state({
     name: 'plan',
@@ -58,7 +64,18 @@ export default function routes($stateProvider, $urlRouterProvider) {
   $stateProvider.state({
     name: 'do',
     url: '/doing',
-    component: 'doing'
+    component: 'doing',
+    resolve: {
+      projects: ['projectsService', projectsService => {
+        return projectsService.getAllProjects();
+      }],
+      tasks: ['tasksService', tasksService => {
+        return tasksService.getAllTasks();
+      }],
+      contexts: ['contextsService', contextsService => {
+        return contextsService.getAllContexts();
+      }]
+    }
   });
 
   $stateProvider.state({

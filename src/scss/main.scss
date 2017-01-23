@@ -1,14 +1,43 @@
 @import 'buttons';
 
-body {
-	font-family: Arial, Helvetica, sans-serif;
-	background-color: lightgrey;
+body, html {
+	font-family: 'Open Sans', sans-serif;
+	background-color: lemonchiffon;
 }
 
-h3 {
-    color: blue;
+h2 {
+  font-family: Ubuntu, Arial, sans-serif;
 }
 
 img {
 	 max-width: 90%;
+}
+
+h2, h3, h4, p {
+  margin: 0.5em;
+}
+
+.pagetitle {
+  font-style: italic;
+}
+
+.sitelogo {
+  font-family: Baloo, sans-serif;
+  text-align: center;
+  color: maroon;
+}
+
+footer {
+  font-size: small;
+  display: block;
+}
+
+.pwrd-by-container {
+  display: flex;
+}
+
+.pwrd-by-item {
+  flex-direction: row;
+  align-items: center;
+  padding: 0 1em;
 }
